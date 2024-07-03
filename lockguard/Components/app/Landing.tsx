@@ -10,17 +10,23 @@ const Landing = () => {
   return (
     <View style={styles.main}>
       <LinearGradient
-        colors={['rgba(0,0,0,0.6)', 'transparent']}
+        colors={["rgba(0,0,0,0.6)", "transparent"]}
         style={styles.gradient}
       />
       <View style={styles.content}>
-        <Ionicons name="shield-checkmark" size={80} color="white" style={styles.icon} />
+        <Ionicons
+          name="shield-checkmark"
+          size={80}
+          color="white"
+          style={styles.icon}
+        />
         <Text style={styles.title}>Welcome to LockGuard</Text>
         <Text style={styles.subtitle}>Your ultimate security companion</Text>
         <TouchableOpacity
           style={styles.button}
           onPress={() => {
-            router.replace("/(home)/main");
+            // router.replace("/(home)/main");
+            router.replace("/(authenticate)/login");
           }}
         >
           <Text style={styles.buttonText}>Get Started</Text>
@@ -65,7 +71,7 @@ const styles = StyleSheet.create({
   button: {
     backgroundColor: "#ff6347",
     paddingVertical: 20,
-    paddingHorizontal: 40, 
+    paddingHorizontal: 40,
     borderRadius: 25,
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 4 },

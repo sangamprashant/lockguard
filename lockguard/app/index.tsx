@@ -1,20 +1,9 @@
-import { Stack } from "expo-router";
 import React from "react";
-import { SafeAreaView, StyleSheet } from "react-native";
-import { Landing } from "../Components";
+import Router from "./routes/Router";
+import LandingCnt from "./(landing)/LandingCnt";
 
-const Home = () => {
-  return (
-    <SafeAreaView style={styles.container}>
-      <Landing />
-    </SafeAreaView>
-  );
+const App = () => {
+  return <LandingCnt />;
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
-
-export default Home;
+export default App;

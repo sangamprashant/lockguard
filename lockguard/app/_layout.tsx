@@ -1,11 +1,13 @@
+// import { Stack } from "expo-router";
 import { Stack } from "expo-router";
 import React from "react";
+import Router from "./routes/Router";
 
 const Layout = () => {
   return (
     <Stack
       screenOptions={{
-        headerShown: false, 
+        headerShown: false,
         headerStyle: {
           backgroundColor: "#1f2f49",
         },
@@ -23,5 +25,9 @@ const Layout = () => {
     </Stack>
   );
 };
+
+// const Layout = () => {
+//   <Router />;
+// };
 
 export default Layout;

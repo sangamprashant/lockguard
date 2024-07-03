@@ -10,7 +10,7 @@ const Layout = () => {
       }}
     >
       <Stack.Screen
-        name="main"
+        name="home"
         options={{
           headerShown: true,
           headerShadowVisible: false,
@@ -35,7 +35,6 @@ const Layout = () => {
           },
         }}
       />
-      <Stack.Screen name="register" options={{ headerShown: true }} />
     </Stack>
   );
 };

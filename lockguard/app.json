@@ -2,7 +2,8 @@
   "expo": {
     "name": "lockguard",
     "slug": "lockguard",
-    "scheme": "acme",
+    "scheme": "lockguard",
+    "platforms": ["ios", "android", "web"],
     "web": {
       "bundler": "metro"
     },
