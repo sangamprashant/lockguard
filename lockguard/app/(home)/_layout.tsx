@@ -48,7 +48,7 @@ const HomeLayout = () => {
             color: "white",
           },
           headerStyle: {
-            backgroundColor: "#1f2f49",
+            backgroundColor: "#172554",
           },
         }}
       />

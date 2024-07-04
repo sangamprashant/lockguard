@@ -2,23 +2,19 @@ import { Slot, Stack } from "expo-router";
 import React from "react";
 import { SessionProvider } from "../context/ctx";
 
+import { NativeWindStyleSheet } from "nativewind";
+import { StatusBar } from "expo-status-bar";
+
+NativeWindStyleSheet.setOutput({
+  default: "native",
+});
+
 const RootLayout = () => {
   return (
     <SessionProvider>
       <Slot />
+      <StatusBar style="dark" />
     </SessionProvider>
-    // <Stack
-    //   screenOptions={{
-    //     headerShown: false,
-    //     headerStyle: {
-    //       backgroundColor: "#1f2f49",
-    //     },
-    //   }}
-    // >
-    //   <Stack.Screen name="(landing)" />
-    //   <Stack.Screen name="(home)" />
-    //   <Stack.Screen name="(authenticate)" />
-    // </Stack>
   );
 };
 

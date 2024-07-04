@@ -6,24 +6,11 @@ const Layout = () => {
     <Stack
       screenOptions={{
         headerShown: false,
-        headerStyle: {
-          backgroundColor: "#1f2f49",
-        },
       }}
     >
-      <Stack.Screen
-        name="index"
-        options={{
-          headerShown: false,
-          headerStyle: {
-            backgroundColor: "#1f2f49",
-          },
-        }}
-      />
+      <Stack.Screen name="index" />
     </Stack>
   );
 };
-
-
 
 export default Layout;

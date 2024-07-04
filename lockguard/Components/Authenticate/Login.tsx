@@ -1,31 +1,40 @@
-import React, { useState } from 'react';
-import { StyleSheet, Text, View, TextInput, TouchableOpacity, Alert } from 'react-native';
-import { LinearGradient } from 'expo-linear-gradient';
-import { Ionicons } from '@expo/vector-icons';
-import { useRouter } from 'expo-router';
+import { Ionicons } from "@expo/vector-icons";
+import { useRouter } from "expo-router";
+import React, { useState } from "react";
+import { Alert, Text, TextInput, TouchableOpacity, View } from "react-native";
+import { useSession } from "../../context/ctx";
 
 const Login = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const { signIn } = useSession();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const router = useRouter();
 
   const handleLogin = () => {
     // Handle login logic here
-    Alert.alert('Login', `Email: ${email}\nPassword: ${password}`);
+    Alert.alert("Login", `Email: ${email}\nPassword: ${password}`);
+    signIn({ email: "example@example.com", password: "password" });
   };
 
   const handleRegister = () => {
-    router.push('/register');
+    router.push("/register");
   };
 
   return (
-    <LinearGradient colors={['#1f2f49', '#3b4b72']} style={styles.gradient}>
-      <View style={styles.container}>
-        <Ionicons name="lock-closed-outline" size={80} color="white" style={styles.icon} />
-        <Text style={styles.subtitle}>Please login to continue</Text>
+    <View className="flex-1 justify-center items-center bg-blue-950">
+      <View className="w-4/5  p-5 rounded-lg items-center border border-blue-900">
+        <Ionicons
+          name="lock-closed-outline"
+          size={80}
+          color="white"
+          className="mb-5"
+        />
+        <Text className="text-lg text-white mb-5">
+          Please login to continue
+        </Text>
         <TextInput
-          style={styles.input}
+          className="w-full p-4 bg-white bg-opacity-20 rounded-lg mb-5 text-black"
           placeholder="Email"
           placeholderTextColor="#aaa"
           value={email}
@@ -34,7 +43,7 @@ const Login = () => {
           autoCapitalize="none"
         />
         <TextInput
-          style={styles.input}
+          className="w-full p-4 bg-white bg-opacity-20 rounded-lg mb-5 text-black"
           placeholder="Password"
           placeholderTextColor="#aaa"
           value={password}
@@ -42,70 +51,21 @@ const Login = () => {
           secureTextEntry
           autoCapitalize="none"
         />
-        <TouchableOpacity style={styles.button} onPress={handleLogin}>
-          <Text style={styles.buttonText}>Login</Text>
+        <TouchableOpacity
+          className="w-full p-4 bg-red-500 rounded-lg items-center mt-2"
+          onPress={handleLogin}
+        >
+          <Text className="text-white font-bold text-lg">Login</Text>
         </TouchableOpacity>
-        <Text style={styles.registerText}>
-          New to LockGuard?{' '}
+        <Text className="text-white mt-5">
+          New to LockGuard?{" "}
           <TouchableOpacity onPress={handleRegister}>
-            <Text style={styles.registerLink}>Register here</Text>
+            <Text className="text-red-500 font-bold">Register here</Text>
           </TouchableOpacity>
         </Text>
       </View>
-    </LinearGradient>
+    </View>
   );
 };
-
-const styles = StyleSheet.create({
-  gradient: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  container: {
-    width: '80%',
-    padding: 20,
-    backgroundColor: 'rgba(255, 255, 255, 0.1)',
-    borderRadius: 10,
-    alignItems: 'center',
-  },
-  icon: {
-    marginBottom: 20,
-  },
-  subtitle: {
-    fontSize: 16,
-    color: 'white',
-    marginBottom: 20,
-  },
-  input: {
-    width: '100%',
-    padding: 15,
-    backgroundColor: 'rgba(255, 255, 255, 0.2)',
-    borderRadius: 10,
-    marginBottom: 20,
-    color: 'white',
-  },
-  button: {
-    width: '100%',
-    padding: 15,
-    backgroundColor: '#ff6347',
-    borderRadius: 10,
-    alignItems: 'center',
-    marginTop: 10,
-  },
-  buttonText: {
-    color: 'white',
-    fontWeight: 'bold',
-    fontSize: 16,
-  },
-  registerText: {
-    color: 'white',
-    marginTop: 20,
-  },
-  registerLink: {
-    color: '#ff6347',
-    fontWeight: 'bold',
-  },
-});
 
 export default Login;

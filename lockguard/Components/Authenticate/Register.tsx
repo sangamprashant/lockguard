@@ -1,15 +1,7 @@
-import React, { useState } from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  TextInput,
-  TouchableOpacity,
-  Alert,
-} from "react-native";
-import { LinearGradient } from "expo-linear-gradient";
 import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
+import React, { useState } from "react";
+import { Alert, Text, TextInput, TouchableOpacity, View } from "react-native";
 
 const Register = () => {
   const [email, setEmail] = useState("");
@@ -32,17 +24,17 @@ const Register = () => {
   };
 
   return (
-    <LinearGradient colors={["#1f2f49", "#3b4b72"]} style={styles.gradient}>
-      <View style={styles.container}>
+    <View className="flex-1 justify-center items-center bg-blue-950">
+      <View className="w-4/5 p-5 rounded-lg items-center border border-blue-900">
         <Ionicons
           name="person-add-outline"
           size={80}
           color="white"
-          style={styles.icon}
+          className="mb-5"
         />
-        <Text style={styles.subtitle}>Create a new account</Text>
+        <Text className="text-lg text-white mb-5">Create a new account</Text>
         <TextInput
-          style={styles.input}
+          className="w-full p-4 bg-white bg-opacity-20 rounded-lg mb-5 text-black"
           placeholder="Email"
           placeholderTextColor="#aaa"
           value={email}
@@ -51,7 +43,7 @@ const Register = () => {
           autoCapitalize="none"
         />
         <TextInput
-          style={styles.input}
+          className="w-full p-4 bg-white bg-opacity-20 rounded-lg mb-5 text-black"
           placeholder="Password"
           placeholderTextColor="#aaa"
           value={password}
@@ -60,7 +52,7 @@ const Register = () => {
           autoCapitalize="none"
         />
         <TextInput
-          style={styles.input}
+          className="w-full p-4 bg-white bg-opacity-20 rounded-lg mb-5 text-black"
           placeholder="Confirm Password"
           placeholderTextColor="#aaa"
           value={confirmPassword}
@@ -68,70 +60,21 @@ const Register = () => {
           secureTextEntry
           autoCapitalize="none"
         />
-        <TouchableOpacity style={styles.button} onPress={handleRegister}>
-          <Text style={styles.buttonText}>Register</Text>
+        <TouchableOpacity
+          className="w-full p-4 bg-red-500 rounded-lg items-center mt-2"
+          onPress={handleRegister}
+        >
+          <Text className="text-white font-bold text-lg">Register</Text>
         </TouchableOpacity>
-        <Text style={styles.loginText}>
+        <Text className="text-white mt-5">
           Already have an account?{" "}
           <TouchableOpacity onPress={handleLogin}>
-            <Text style={styles.loginLink}>Login here</Text>
+            <Text className="text-red-500 font-bold">Login here</Text>
           </TouchableOpacity>
         </Text>
       </View>
-    </LinearGradient>
+    </View>
   );
 };
-
-const styles = StyleSheet.create({
-  gradient: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  container: {
-    width: "80%",
-    padding: 20,
-    backgroundColor: "rgba(255, 255, 255, 0.1)",
-    borderRadius: 10,
-    alignItems: "center",
-  },
-  icon: {
-    marginBottom: 20,
-  },
-  subtitle: {
-    fontSize: 16,
-    color: "white",
-    marginBottom: 20,
-  },
-  input: {
-    width: "100%",
-    padding: 15,
-    backgroundColor: "rgba(255, 255, 255, 0.2)",
-    borderRadius: 10,
-    marginBottom: 20,
-    color: "white",
-  },
-  button: {
-    width: "100%",
-    padding: 15,
-    backgroundColor: "#ff6347",
-    borderRadius: 10,
-    alignItems: "center",
-    marginTop: 10,
-  },
-  buttonText: {
-    color: "white",
-    fontWeight: "bold",
-    fontSize: 16,
-  },
-  loginText: {
-    color: "white",
-    marginTop: 20,
-  },
-  loginLink: {
-    color: "#ff6347",
-    fontWeight: "bold",
-  },
-});
 
 export default Register;

@@ -1,8 +1,6 @@
-import { Stack } from "expo-router";
 import React from "react";
 import { SafeAreaView, StyleSheet } from "react-native";
 import { Landing } from "../../Components";
-// import { Landing } from "../Components";
 
 const LandingCnt = () => {
   return (
