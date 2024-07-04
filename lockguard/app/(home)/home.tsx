@@ -1,19 +1,13 @@
 import React from "react";
-import { SafeAreaView, ScrollView, Text } from "react-native";
-import { Banner } from "../../Components";
-import { useSession } from "../../context/ctx";
+import { SafeAreaView, ScrollView } from "react-native";
+import { Banner, Details } from "../../Components";
 
 const Home = () => {
-  const { signOut } = useSession();
-
   return (
-    <SafeAreaView className="flex-1 bg-gray-900">
-      <ScrollView
-        contentContainerStyle={{ flexGrow: 1 }}
-        showsHorizontalScrollIndicator={false}
-        className="p-4"
-      >
+    <SafeAreaView style={{ flex: 1, backgroundColor: "white" }}>
+      <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
         <Banner />
+        <Details />
       </ScrollView>
     </SafeAreaView>
   );

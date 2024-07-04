@@ -1,28 +1,35 @@
 import React, { useState } from "react";
-import { Text, View, Switch } from "react-native";
+import { Image, Text, TouchableOpacity, View } from "react-native";
+import { Images } from "../../assets";
 
 const Banner = () => {
   const [isEnabled, setIsEnabled] = useState(false);
 
-  const toggleSwitch = () => setIsEnabled(previousState => !previousState);
+  const toggleSwitch = () => {
+    setIsEnabled((previousState) => !previousState);
+  };
 
   return (
-    <View className="p-10 items-center bg-blue-950 rounded-b-lg ">
-      <Text className="text-white text-3xl font-bold mb-3">
-        LockGuard
+    <View className="p-10 items-center rounded-b-lg ">
+      <Text className=" text-blue-950 text-6xl mb-3 font-extrabold">
+        LOCKGUARD
       </Text>
-      <Text className="text-gray-300 text-lg mb-5">
-        Your ultimate security companion
-      </Text>
-      <View className="flex-row items-center mt-5">
-        <Text className="text-white mr-3">Feature</Text>
-        <Switch
-          trackColor={{ false: "#767577", true: "#81b0ff" }}
-          thumbColor={isEnabled ? "#f5dd4b" : "#f4f3f4"}
-          onValueChange={toggleSwitch}
-          value={isEnabled}
+
+      <TouchableOpacity
+        className="flex-row items-center my-5 bg-gray-200 p-2 rounded-full shadow shadow-blue-950 drop-shadow"
+        onPress={toggleSwitch}
+        // disabled
+      >
+        <Image
+          source={isEnabled ? Images.powerOn : Images.powerOff}
+          style={{ width: 200, height: 200 }}
         />
-      </View>
+      </TouchableOpacity>
+      <Text className="mb-5 text-xl text-blue-950   font-bold text-center">
+        {isEnabled
+          ? "Your phone is protected."
+          : "Your phone is not protected."}
+      </Text>
     </View>
   );
 };
