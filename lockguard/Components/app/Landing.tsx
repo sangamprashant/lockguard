@@ -25,8 +25,8 @@ const Landing = () => {
         <TouchableOpacity
           style={styles.button}
           onPress={() => {
-            // router.replace("/(home)/main");
-            router.replace("/(authenticate)/login");
+            router.replace("/(home)/home");
+            // router.replace("/(authenticate)/login");
           }}
         >
           <Text style={styles.buttonText}>Get Started</Text>

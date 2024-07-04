@@ -1,8 +1,10 @@
 import React from "react";
-import { SafeAreaView, ScrollView, StyleSheet } from "react-native";
+import { SafeAreaView, ScrollView, StyleSheet, Text } from "react-native";
 import { Banner } from "../../Components";
+import { useSession } from "../../context/ctx";
 
 const Home = () => {
+  const {  signOut } = useSession();
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView
@@ -10,6 +12,7 @@ const Home = () => {
         showsHorizontalScrollIndicator={false}
       >
         <Banner />
+        <Text onPress={signOut}>Logout</Text>
       </ScrollView>
     </SafeAreaView>
   );

@@ -1,33 +1,25 @@
-// import { Stack } from "expo-router";
-import { Stack } from "expo-router";
+import { Slot, Stack } from "expo-router";
 import React from "react";
-import Router from "./routes/Router";
+import { SessionProvider } from "../context/ctx";
 
-const Layout = () => {
+const RootLayout = () => {
   return (
-    <Stack
-      screenOptions={{
-        headerShown: false,
-        headerStyle: {
-          backgroundColor: "#1f2f49",
-        },
-      }}
-    >
-      <Stack.Screen
-        name="index"
-        options={{
-          headerShown: false,
-          headerStyle: {
-            backgroundColor: "#1f2f49",
-          },
-        }}
-      />
-    </Stack>
+    <SessionProvider>
+      <Slot />
+    </SessionProvider>
+    // <Stack
+    //   screenOptions={{
+    //     headerShown: false,
+    //     headerStyle: {
+    //       backgroundColor: "#1f2f49",
+    //     },
+    //   }}
+    // >
+    //   <Stack.Screen name="(landing)" />
+    //   <Stack.Screen name="(home)" />
+    //   <Stack.Screen name="(authenticate)" />
+    // </Stack>
   );
 };
 
-// const Layout = () => {
-//   <Router />;
-// };
-
-export default Layout;
+export default RootLayout;
