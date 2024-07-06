@@ -1,6 +1,6 @@
-<center>
+<p align="center">
    <img src="./assets/images/icon.png" width="200px" alt="icon">
-</center>
+</p>
 
 ---
 
@@ -96,11 +96,11 @@ Thank you for using LockGuard. We hope it provides the security and peace of min
 ## Screenshots
 
 <img src="./assets/images/1.jpg" width="100%" alt="Screenshot 1">
-<div style="display: flex; justify-content: space-between; flex-wrap: wrap;">
+<div style="display: flex; justify-content: space-between; flex-wrap: wrap;" align="center">
    <img src="./assets/images/2.jpg" style="width: 48%;" alt="Screenshot 2">
    <img src="./assets/images/3.jpg" style="width: 48%;" alt="Screenshot 3">
 </div>
-<div style="display: flex; justify-content: space-between; flex-wrap: wrap; margin-top: 10px;">
+<div style="display: flex; justify-content: space-between; flex-wrap: wrap; margin-top: 10px;" align="center">
    <img src="./assets/images/4.jpg" style="width: 48%;" alt="Screenshot 4">
    <img src="./assets/images/5.jpg" style="width: 48%;" alt="Screenshot 5">
 </div>
