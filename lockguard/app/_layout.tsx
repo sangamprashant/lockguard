@@ -1,61 +1,61 @@
 import { Slot } from "expo-router";
-import React, { useEffect } from "react";
-import { SessionProvider } from "../context/ctx";
 import { StatusBar } from "expo-status-bar";
 import { NativeWindStyleSheet } from "nativewind";
-import BackgroundFetch from "react-native-background-fetch";
-import { AppRegistry } from "react-native";
-import appConfig from "../app.json"; // Correct import for appName
+import React, { useEffect, useState } from "react";
+import {
+  DeviceEventEmitter,
+  NativeEventEmitter,
+  NativeModules,
+  Text,
+  View,
+} from "react-native";
+import { SessionProvider } from "../context/ctx";
 
 NativeWindStyleSheet.setOutput({
   default: "native",
 });
 
-const configureBackgroundFetch = async () => {
-  try {
-    BackgroundFetch.configure(
-      {
-        minimumFetchInterval: 15, // fetch interval in minutes
-        stopOnTerminate: false,
-        startOnBoot: true,
-        requiredNetworkType: BackgroundFetch.NETWORK_TYPE_NONE, // Default
-      },
-      async (taskId) => {
-        console.log("[BackgroundFetch] taskId: ", taskId);
-
-        // Call your camera function here
-        // Example: await takePicture();
-
-        // Required: Signal completion of your task to native code
-        BackgroundFetch.finish(taskId);
-      },
-      (error) => {
-        console.error("[BackgroundFetch] failed to start", error);
-      }
-    );
-
-    BackgroundFetch.status((status) => {
-      switch (status) {
-        case BackgroundFetch.STATUS_RESTRICTED:
-          console.log("BackgroundFetch restricted");
-          break;
-        case BackgroundFetch.STATUS_DENIED:
-          console.log("BackgroundFetch denied");
-          break;
-        case BackgroundFetch.STATUS_AVAILABLE:
-          console.log("BackgroundFetch is enabled");
-          break;
-      }
-    });
-  } catch (error) {
-    console.error("Error configuring BackgroundFetch:", error);
-  }
-};
-
 const RootLayout = () => {
-  useEffect(() => {
-    configureBackgroundFetch();
-  }, []);
+  // const [unlockAttempts, setUnlockAttempts] = useState(0);
+
+  // useEffect(() => {
+  //   // Initialize LockDetection if available
+  //   if (NativeModules.LockDetection) {
+  //     const { LockDetection } = NativeModules;
+  //     LockDetection.registerforDeviceLockNotif();
+
+  //     const LockDetectionEmitter = new NativeEventEmitter(LockDetection);
+  //     const lockStatusListener = LockDetectionEmitter.addListener(
+  //       "LockStatusChange",
+  //       (newStatus) => {
+  //         console.log("LockStatusChange", newStatus);
+  //       }
+  //     );
+
+  //     const deviceUnlockedListener = DeviceEventEmitter.addListener(
+  //       "device_unlocked",
+  //       () => {
+  //         console.log("Device unlocked");
+  //       }
+  //     );
+
+  //     const deviceLockedListener = DeviceEventEmitter.addListener(
+  //       "device_locked",
+  //       () => {
+  //         console.log("Device locked");
+  //       }
+  //     );
+
+  //     // Cleanup listeners on unmount
+  //     return () => {
+  //       lockStatusListener.remove();
+  //       deviceUnlockedListener.remove();
+  //       deviceLockedListener.remove();
+  //     };
+  //   } else {
+  //     console.warn("LockDetection module is not available");
+  //   }
+  // }, []);
 
   return (
     <SessionProvider>
@@ -66,11 +66,11 @@ const RootLayout = () => {
         style="light"
         hidden={false}
       />
+      {/* <View style={{ padding: 20 }}>
+        <Text>Unlock attempts: {unlockAttempts}</Text>
+      </View> */}
     </SessionProvider>
   );
 };
-
-// Register the main component
-AppRegistry.registerComponent(appConfig.expo.name, () => RootLayout);
 
 export default RootLayout;

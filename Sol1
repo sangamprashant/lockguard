@@ -1,0 +1,26 @@
+import React, { useState, useEffect } from 'react';
+import { Text, View } from 'react-native';
+import { DeviceLockEvents } from 'react-native-device-lock-events';
+
+const App = () => {
+  const [wrongPasswordAttempts, setWrongPasswordAttempts] = useState(0);
+
+  useEffect(() => {
+    DeviceLockEvents.addEventListener('wrongPasswordAttempt', () => {
+      setWrongPasswordAttempts(wrongPasswordAttempts + 1);
+    });
+  }, []);
+
+  return (
+    <View>
+      <Text>Wrong password attempts: {wrongPasswordAttempts}</Text>
+      {wrongPasswordAttempts > 0 && (
+        <Text style={{ color: 'red' }}>
+          You entered a wrong password to unlock your device!
+        </Text>
+      )}
+    </View>
+  );
+};
+
+export default App;
