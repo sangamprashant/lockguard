@@ -95,7 +95,10 @@ Thank you for using LockGuard. We hope it provides the security and peace of min
 
 ## Screenshots
 
-<img src="./assets/images/1.jpg" width="100%" alt="Screenshot 1">
+<div align="center">
+<img src="./assets/images/1.jpg" width="48%" alt="Screenshot 1">
+</div>
+
 <div style="display: flex; justify-content: space-between; flex-wrap: wrap;" align="center">
    <img src="./assets/images/2.jpg" style="width: 48%;" alt="Screenshot 2">
    <img src="./assets/images/3.jpg" style="width: 48%;" alt="Screenshot 3">
